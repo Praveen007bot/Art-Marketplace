@@ -7,11 +7,12 @@
         $id = $_GET['id'];
 
         // Query to fetch user details by ID
-        $sql = "SELECT * FROM product WHERE id = $id";
+        $sql = "SELECT * FROM product WHERE productID = $id";
         $result = $conn->query($sql);
 
         if ($result->num_rows == 1) {
             $row = $result->fetch_assoc();
+            $productID = $id;
             $productname = $row['art_name'];
             $productartist = $row['artist_name'];
             $productprice = $row['art_price'];
@@ -22,7 +23,7 @@
 
                 //******* start get product details *******
                 //query
-                $Q_get_product = "SELECT * FROM product WHERE id = '$id'";
+                $Q_get_product = "SELECT * FROM product WHERE productID = '$id'";
                 //run query
                 $run_get_product = mysqli_query($conn, $Q_get_product);
                 //store details in array
@@ -32,6 +33,7 @@
                 //******* start get product type *******
 
                 //declare variables for all column headers
+                $productID = $id;
                 $art_name = $row_product['art_name'];
                 $artist_name = $row_product['artist_name'];
                 $art_image = $row_product['art_image'];
@@ -64,12 +66,9 @@
                                                     <p class="text-muted"><strong><?php echo $row["art_name"]; ?></strong></p>
                                                 </li>
                                             </ul>
-                                            <div class="row pb-3">
+                                            <div class="row pb-3"> 
                                                 <div class="col d-grid">
-                                                    <button type="submit" class="btn btn-success btn-lg" name="submit" value="buy">Buy</button>
-                                                </div>
-                                                <div class="col d-grid">
-                                                    <input type="hidden" name="product_id" value="<?php echo $row['id']; ?>">
+                                                    <input type="hidden" name="product_id" value="<?php echo $row['productID']; ?>">
                                                     <button type="button" class="btn btn-success btn-lg" name="add-to-cart-btn" value="Add to Cart">Add To Cart</button>
                                                 </div>
                                             </div>
@@ -82,6 +81,7 @@
     <script>
     $(document).ready(function () {
         $('button[name="add-to-cart-btn"]').on('click', function () {
+            var productID = "<?php echo $productID; ?>";
             var art_name = "<?php echo $art_name; ?>";
             var artist_name = "<?php echo $artist_name; ?>";
             var art_price = "<?php echo $art_price; ?>";
@@ -91,6 +91,7 @@
                 url: 'add_to_cart.php',
                 type: 'POST',
                 data: {
+                    productID:productID,
                     art_name: art_name,
                     artist_name: artist_name,
                     art_price: art_price,

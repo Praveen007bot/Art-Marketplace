@@ -1,5 +1,7 @@
 <?php
 include "config.php";
+
+
 ?>
 
 <!DOCTYPE html>
@@ -27,16 +29,18 @@ include "config.php";
 
 
     
-  
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.15.3/css/all.css" integrity="your-integrity-code" crossorigin="anonymous">
+
 
     <!-- Font Awesome -->
-    <script src="https://kit.fontawesome.com/0e16635bd7.js" crossorigin="anonymous"></script>
+   
     <!-- Animate CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
     <!--========== BOXICONS ==========-->
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+     
 
 </head>
 
@@ -68,6 +72,9 @@ include "config.php";
                         <li class="nav-item">
                             <a class="nav-link" href="contact.php">Contact</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="orders.php">Orders</a>
+                        </li>
                     </ul>
                 </div>
                 <div class="navbar align-self-center d-flex">
@@ -86,7 +93,7 @@ include "config.php";
                         <i class="fa fa-fw fa-cart-arrow-down text-dark mr-1"></i>
                         
                     </a>
-                    <a class="nav-icon position-relative text-decoration-none" href="login.php">
+                    <a class="nav-icon position-relative text-decoration-none" href="profile.php">
                         <i class="fa fa-fw fa-user text-dark mr-3"></i>
                         
                     </a>

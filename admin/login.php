@@ -24,7 +24,7 @@ if ($conn->connect_error) {
 }
 
 	  
-	 $sql = "SELECT * from admin where email = '$email' AND password = '$password'";  
+	 $sql = "SELECT * from admin where admin_email = '$email' AND admin_password = '$password'";  
 	 
 
 

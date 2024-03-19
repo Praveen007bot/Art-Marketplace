@@ -5,6 +5,7 @@
   $sql = "SELECT * FROM product";
   $all_product = $conn->query($sql);
   $row = $all_product->fetch_assoc();
+  $productID = $row['productID'];
   $productname = $row['art_name'];
   $productartist = $row['artist_name'];
   $productprice = $row['art_price'];
@@ -61,12 +62,12 @@
                                 <img class="card-img rounded-0 img-fluid" src="<?php echo $row["art_image"];  ?>">
                                 <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
                                     <ul class="list-unstyled">
-                                        <li><a class="btn btn-success text-white" href="#" ><i class="far fa-heart"></i></a></li>
-                                        <li><a class="btn btn-success text-white mt-2" href="shop-single.php?id=<?php echo $row["id"];  ?>"><i class="far fa-eye"></i></a></li>
+                                        br
+                                        <li><a class="btn btn-success text-white mt-2" href="shop-single.php?id=<?php echo $row["productID"];  ?>"><i class="far fa-eye"></i></a></li>
                                         <li>
-                                            <input type="hidden" name="product_id" value="<?php echo $row['id']; ?>">
+                                            <input type="hidden" name="product_id" value="<?php echo $row['productID']; ?>">
                                             <button type="button" class="btn btn-success text-white mt-2 add-to-cart-btn"
-                                                    data-id="<?php echo $row['id']; ?>"
+                                                    data-product-id="<?php echo $row['productID']; ?>"
                                                     data-art-name="<?php echo $row['art_name']; ?>"
                                                     data-artist-name="<?php echo $row['artist_name']; ?>"
                                                     data-art-price="<?php echo $row['art_price']; ?>"
@@ -126,7 +127,7 @@
     $(document).ready(function () {
         $('.add-to-cart-btn').on('click', function () {
             // Get the product details from the clicked button's data attributes
-            var productId = $(this).data('id');
+            var productID = $(this).data('product-id');
             var art_name = $(this).data('art-name');
             var artist_name = $(this).data('artist-name');
             var art_price = $(this).data('art-price');
@@ -137,7 +138,7 @@
                 url: 'add_to_cart.php',
                 type: 'POST',
                 data: {
-                    productId: productId,
+                    productID: productID,
                     art_name: art_name,
                     artist_name: artist_name,
                     art_price: art_price,

@@ -40,8 +40,14 @@ if ($result->num_rows == 1) {
     $_SESSION["id"] = $userInfo["id"];
     $_SESSION["Name"] = $userInfo["name"];
     $_SESSION["email"] = $userInfo["email"];
-    // Redirect to a protected page (e.g., home.php)
-    echo "<script type='text/javascript'>alert('$message');window.location.href='index.php';</script>";
+    // Redirect to a protected page (e.g., home.php)`
+    ?>
+    <script type='text/javascript'>
+      alert('$message');
+      window.location.href='index.php';
+    </script>
+
+    <?php
 
     exit();
 } else {
@@ -62,7 +68,7 @@ $conn->close();
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <title>Login Form | CodingLab</title> 
+     <title>Login Form</title> 
     <link rel="stylesheet" href="assets/css/login.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
   </head>

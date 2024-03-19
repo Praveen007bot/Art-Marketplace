@@ -9,8 +9,7 @@ $ErrorResponse = "";
 $Action = stripslashes(trim($_REQUEST["action"]));
 $HtmlContent = "";
 
-// Start a PHP session (if not already started)
-session_start();
+
 
 if (isset($Action) && $Action == "login") {
     try {
@@ -93,6 +92,72 @@ if (isset($Action) && $Action == "login") {
         $AddNewUserQuery = "INSERT INTO orders ($columns) VALUES ('$values')";
         $ExecuteAddNewUserQuery = mysqli_query($conn, $AddNewUserQuery) or die("Error in query: $AddNewUserQuery. " . mysqli_error($conn));
         
+
+        $lastOrderID = mysqli_insert_id($conn);
+        $sessionProducts = $_SESSION['productItems'];
+
+
+        function validate($inputData){
+            global $conn;
+            $validateData = mysqli_real_escape_string($conn, $inputData);
+            return trim($validateData);
+        }
+
+
+        function insert($tablename, $data){
+            global $conn;
+
+            $table = validate($tablename);
+
+            $columns = array_keys($data);
+            $values = array_values($data);
+
+            $finalColumn = implode(',', $columns);
+            $finalValues = "'".implode("', '", $values)."'";
+
+            $query = "INSERT INTO $table ($finalColumn) VALUES ($finalValues)";
+            $result = mysqli_query($conn,$query);
+            return $result;
+        }
+
+
+
+
+
+        if (isset($sessionProducts) && is_array($sessionProducts)) {
+            foreach ($sessionProducts as $productItem) {
+                $productID  = $productItem['productID'];
+                $art_name  = $productItem['art_name'];
+                $art_price  = $productItem['art_price'];
+                $artist_name  = $productItem['artist_name'];
+                $art_image  = $productItem['art_image'];
+    
+                $dataOrderItem = [
+                    'orderID' => $lastOrderID,
+                    'productID' => $productID,
+                    'art_name' => $art_name,
+                    'artist_name' => $artist_name,
+                    'art_price' => $art_price,         
+                    'art_image' => $art_image,
+    
+                ];
+                
+                $orderItemQuery = insert('orderitem', $dataOrderItem);
+            }
+        } else {
+            // Handle the case where $sessionProducts is null or not an array
+            echo "Error: Invalid or empty sessionProducts.";
+        }
+
+        unset($_SESSION['productItems']);
+        
+
+        
+
+
+
+       
+        
         if ($ExecuteAddNewUserQuery) {
             // Order inserted successfully, now remove items from the cart
             $deleteCartItems = "DELETE FROM cartitem WHERE userID = '$userID'";
@@ -123,3 +188,5 @@ $Response = json_encode($ResponseArray, true);
 echo $Response;
 exit;
 ?>
+
+

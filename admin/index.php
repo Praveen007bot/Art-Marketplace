@@ -3,7 +3,7 @@
     include "connection.php";
     
     $admin_id = $_SESSION['id'];
-    $sql = "SELECT COUNT(*) as rowCount FROM product WHERE admin_id = $admin_id";
+    $sql = "SELECT COUNT(*) as rowCount FROM product";
     $result = $conn->query($sql);
 ?>
 
@@ -19,7 +19,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Seller Dashboard</title>
+    <title>Admin Dashboard</title>
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -36,6 +36,7 @@
 
     <!-- Page Wrapper -->
     <div id="wrapper">
+        
 
         <!-- Sidebar -->
         <?php
@@ -104,7 +105,7 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                Add Products</div>
+                                                Users</div>
                                             <div class="h5 mb-0 font-weight-bold text-gray-800"></div>
                                         </div>
                                         <div class="col-auto">

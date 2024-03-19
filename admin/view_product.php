@@ -115,7 +115,7 @@ if (isset($_GET['edit_msg']) && $_GET['edit_msg'] == 2) {
                                         <tbody>
                                             <?php
                                             require_once('connection.php');
-                                            $select = "SELECT * FROM product WHERE admin_id = $admin_id;";
+                                            $select = "SELECT * FROM product;";
                                             $query = mysqli_query($conn, $select);
                                             $i = 1;
                                             while ($res = mysqli_fetch_assoc($query)) {
@@ -142,8 +142,8 @@ if (isset($_GET['edit_msg']) && $_GET['edit_msg'] == 2) {
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <button data-toggle="modal" data-target="#exampleModal" class="btn btn-space btn-primary" onclick="edit_prod(<?php echo $res['id'];?>)">Edit</button>
-                                                    <button onclick="delete_prod(<?php echo $res['id'];?>)" class="btn btn-space btn-danger">DELETE</button></td>
+                                                    <button data-toggle="modal" data-target="#exampleModal" class="btn btn-space btn-primary" onclick="edit_prod(<?php echo $res['productID'];?>)">Edit</button>
+                                                    <button onclick="delete_prod(<?php echo $res['productID'];?>)" class="btn btn-space btn-danger">DELETE</button></td>
 
                                                 <td>
                                                     

@@ -52,7 +52,7 @@
                     include "includes/topbar.php";
                 ?>
 
-<div class="row">
+                <div class="row">
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                         <div class="card">
                             <h5 class="card-header">Users Table</h5>
@@ -97,7 +97,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="modal fade" id="exampleModal" data-backdrop="static" tabindex="-1" role="dialog">
+    <div class="modal fade" id="exampleModal" data-backdrop="static" tabindex="-1" role="dialog">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
@@ -137,6 +137,10 @@
       </div>
     </div>
                  <!-- Optional JavaScript -->
+
+    <!-- Include Bootstrap CSS -->
+
+
     <script src="../js/jquery-3.3.1.min.js"></script>
     <script src="../js/bootstrap.bundle.js"></script>
     <script src="../js/jquery.slimscroll.js"></script>

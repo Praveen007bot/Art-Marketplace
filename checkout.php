@@ -3,6 +3,9 @@
     include "includes/header.php";
     
     
+
+    
+    
     $userID = $_SESSION['id'];
 
 
@@ -27,35 +30,7 @@
     }
      
         
-    if(isset($_POST['order'])){
-        $f_name = $_POST['f_name'];
-        $l_name = $_POST['l_name'];        
-        $email = $_POST['email'];
-        $address = $_POST['address'];
-        $country = $_POST['country'];
-        $state = $_POST['state'];
-        $zipcode = $_POST['zipcode'];
- 
-        
-        $sql = "INSERT INTO checkout(userID, f_name, l_name, email, address, country, state, zipcode, total_amount) VALUES('$userID','$f_name','$l_name','$email','$address','$country','$state','$zipcode','$Amount')";
-        $result = $conn->query($sql);
-
-        if ($result) {
-            echo "Order inserted successfully";
-            $deleteCartItems = "DELETE FROM cartitem WHERE userID = '$userID'";
-            $deleteResult = $conn->query($deleteCartItems);
     
-            if ($deleteResult) {
-                echo "Order inserted successfully, and cart items removed.";
-            } else {
-                echo "Error removing cart items: " . $conn->error;
-            }
-        } else {
-            echo "Error: " . $sql . "<br>" . $conn->error;
-        }
-
-        
-    }
 ?>
 
 
@@ -130,12 +105,12 @@
                 <div class="row">
                     <div class="col-md-6 mb-3">
                         <label for="firstName">First name</label>
-                        <input type="text" class="form-control" id="f_Name" name="f_name" placeholder="" value="" required="">
+                        <input type="text" class="form-control" id="f_name" name="f_name" placeholder="" value="" required="">
                         <div class="invalid-feedback"> Valid first name is required. </div>
                     </div>
                     <div class="col-md-6 mb-3">
                         <label for="lastName">Last name</label>
-                        <input type="text" class="form-control" id="l_Name" name="l_name" placeholder="" value="" required="">
+                        <input type="text" class="form-control" id="l_name" name="l_name" placeholder="" value="" required="">
                         <div class="invalid-feedback"> Valid last name is required. </div>
                     </div>
                 </div>
@@ -192,13 +167,13 @@
 
         function pay_now()
         {
-            var name          = ""; // Add Name
+            var name          = "Local Art"; // Add Name
             var amount        = "<?php echo $Amount; ?>"; // Get total amount
             var actual_amount = parseInt(amount) * 100;
             var description   = "Art"; // Add description
 
             var options = {
-                "key": "rzp_test_MGWGsjkJ3Kthbl", // Add API Key
+                "key": "rzp_test_zAeMUkRB7xCEGH", // Add API Key
                 "amount": actual_amount, 
                 "currency": "INR",
                 "name": name,

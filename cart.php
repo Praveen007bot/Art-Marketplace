@@ -1,5 +1,6 @@
 <?php
     session_start();
+    unset($_SESSION['productItems']);
     include "includes/header.php";
 ?>
 
@@ -12,37 +13,19 @@
         $sql = "SELECT * FROM cartitem WHERE userID = $id";
         $result = $conn->query($sql);
         
+        $productDetailsArray = array();
 
-        if ($result->num_rows > 0) {
-                
-               
-
+        if (!isset($_SESSION['productItems'])) {
             
-
-                //******* start get product details *******
-                //query
-                $Q_get_product = "SELECT * FROM cartitem WHERE userID =$id";
-                //run query
-                $run_get_product = mysqli_query($conn, $Q_get_product);
-                //store details in array
-                $row_product = mysqli_fetch_array($run_get_product);
-                //******* end get product details *******
-
-                //******* start get product type *******
-
-                //declare variables for all column headers
-                $art_name = $row_product['art_name'];
-                $artist_name = $row_product['artist_name'];
-                $art_image = $row_product['art_image'];
-                $art_price = $row_product['art_price'];
-                // $Amount=$row_product['amount'];
-                // $Amount=$_SESSION($Amount);
-                $total = 0;
+            $_SESSION['productItems'] = array();
+        }
+        if ($result->num_rows > 0) {
+            $total = 0;
             
             ?>
 
                 
-<  <section class="h-100 gradient-custom">
+         <section class="h-100 gradient-custom">
             <form action="cart.php" method="POST" enctype="multipart/form-data">
                 <div class="container py-5">
                     <div class="row d-flex justify-content-center my-4">
@@ -55,6 +38,15 @@
                                     <!-- Single item -->
                                     <?php
                                     while ($row = $result->fetch_assoc()) {
+                                        $productData = [
+                                            'productID' => $row['productID'],
+                                            'art_name' => $row['art_name'],
+                                            'artist_name' => $row['artist_name'],
+                                            'art_price' => $row['art_price'],
+                                            'art_image' => $row['art_image'],
+                                           ];
+                            
+                                           array_push($_SESSION['productItems'],$productData);
                                     ?>
                                         <div class="row">
                                             <div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
@@ -224,6 +216,7 @@
 <script>
     $(document).ready(function () {
         $('button[name="add-to-cart-btn"]').on('click', function () {
+            var productID = "<?php echo $productID; ?>";
             var art_name = "<?php echo $art_name; ?>";
             var artist_name = "<?php echo $artist_name; ?>";
             var art_price = "<?php echo $art_price; ?>";
@@ -233,6 +226,7 @@
                 url: 'add_to_cart.php',
                 type: 'POST',
                 data: {
+                    productID : productID,
                     art_name: art_name,
                     artist_name: artist_name,
                     art_price: art_price,
