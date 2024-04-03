@@ -254,21 +254,24 @@ if (isset($_GET['edit_msg']) && $_GET['edit_msg'] == 2) {
             "use strict";
             $(".currency-inputmask").inputmask('999');
         });
-        function edit_prod(id) {
-            $.ajax({
-                url:'get_product.php',
-                data:'id='+id,
-                method:'get',
-                dataType:'json',
-                success:function(res){
-                    console.log(res);
-                    $('input[name="art_name"]').val(res.art_name); // Change 'product_name' to 'art_name'
-                    $('input[name="artist_name"]').val(res.artist_name); // Change 'product_category' to 'artist_name'
-                    $('input[name="art_price"]').val(res.art_price); // Change 'product_price' to 'art_price'
-                    $('input[name="hidden_product"]').val(res.id);
-                }
-            })
+       
+function edit_prod(id) {
+    $.ajax({
+        url:'get_product.php',
+        data:{id: id}, // Pass id as data
+        method:'get',
+        dataType:'json',
+        success:function(res){
+            console.log(res);
+            $('input[name="art_name"]').val(res.art_name);
+            $('input[name="artist_name"]').val(res.artist_name);
+            $('input[name="art_price"]').val(res.art_price);
+            $('input[name="hidden_product"]').val(res.productID); // Assuming the ID field name is productID
         }
+    })
+}
+
+
         function delete_prod(prod_id) {
             var flag = confirm("Do you want to delete?");
             if (flag) {
@@ -304,5 +307,5 @@ if (isset($_GET['edit_msg']) && $_GET['edit_msg'] == 2) {
 </body>
  
 </html>
-<?php
+
 

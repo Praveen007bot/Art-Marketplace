@@ -70,11 +70,11 @@ $conn->close();
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
 
   </head>
-  <body class="bg-gradient-primary">
+  <body>
 
     <div class="container">
 
-        <div class="card o-hidden border-0 shadow-lg my-5" style="margin:auto;width:800px;">
+        <div class="card o-hidden border-0 shadow-lg my-5" style="margin:auto;width: 521px;">
             <div class="card-body p-0">
                 <!-- Nested Row within Card Body -->
                 <div class="wrapper">

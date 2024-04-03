@@ -44,7 +44,7 @@
         if($artname != "" && $artprice !=""){
             move_uploaded_file($_FILES["artimage"]["tmp_name"],$upload_file);
 
-            $sql = "INSERT INTO product (admin_id, art_name, artist_name, art_price, art_image)
+            $sql = "INSERT INTO product (sellerID, art_name, artist_name, art_price, art_image)
             VALUES ('$admin_id', '$artname', '$artistname', '$artprice', '$artimage')";
 
 
@@ -112,7 +112,7 @@
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
-                <div class="container" style="margin: top 100px;px;">
+                <div class="container" style="margin: top 100px;">
                 <section style="padding:0px;">
 
                     <!-- Page Heading -->
