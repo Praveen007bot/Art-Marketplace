@@ -69,12 +69,17 @@ $conn->close();
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <title>Login Form</title> 
+     <link href="./seller/css/sb-admin-2.min.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/login.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
+    <link href="./seller/css/sb-admin-2.css" rel="stylesheet">
   </head>
   <body>
     <div class="container">
-      <div class="wrapper">
+    <div class="card o-hidden border-0 shadow-lg my-5" style="margin:auto;width: 521px;">
+            <div class="card-body p-0">
+      <div class="wrapper" style="margin-left: 86px;
+    width: 68%;">
       
         <div class="title"><span>Welcome Back!</span></div>
         <form action="login.php" method = "post">
