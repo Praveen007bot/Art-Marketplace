@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 03, 2024 at 10:59 AM
+-- Generation Time: May 05, 2024 at 09:12 AM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -213,12 +213,11 @@ CREATE TABLE `product` (
 
 INSERT INTO `product` (`productID`, `sellerID`, `art_name`, `artist_name`, `art_price`, `art_image`) VALUES
 (6, 2, 'Eyes of Hope ', 'Khula Aasmaan', 1000, 'uploads/img_1.png'),
-(7, 2, 'Face of War', 'Artist Bipul Singh', 1500, 'uploads/img_2.png'),
+(7, 2, 'Monalisa', 'Artist Bipul Singh', 1500, 'uploads/img_2.png'),
 (8, 2, 'Sad Lady', 'Zoya Deb', 400, 'uploads/img_3.png'),
 (9, 2, 'The Artist III', 'Zoya Deb', 1500, 'uploads/img_4.png'),
 (10, 2, 'Abstract Floral ', 'Anupa Paul', 600, 'uploads/img_5.png'),
-(11, 1, 'Power of knowledge', 'Bipul Singh', 800, 'uploads/img_6.png'),
-(26, 2, 'product1', 'praveen kumar', 5000, 'uploads/anime-naruto-hinata-hyūga-wallpaper-preview.jpg');
+(11, 1, 'Power of knowledge', 'Bipul Singh', 800, 'uploads/img_6.png');
 
 -- --------------------------------------------------------
 

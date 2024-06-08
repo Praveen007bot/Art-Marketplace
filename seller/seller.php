@@ -141,7 +141,7 @@
 
                 <button id="choose" onclick="upload();">Choose Image</button>
 
-                <button type="submit" value ="Upload" name="submit">Upload Product</button>
+                <button style="margin-top: 10px;" type="submit" value ="Upload" name="submit">Upload Product</button>
             </form>
             <script>
                 var artname = document.getElementById("artname");
